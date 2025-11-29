@@ -105,7 +105,7 @@ export default function Home() {
             OWASP Top 10 for <span className="text-emerald-500">LLM</span> 2025
           </h1>
           <p className="text-xl text-zinc-400">
-            Interactive demonstrations and educational resources for Large Language Model security by darshanhackz.
+            Interactive demonstrations and educational resources for Large Language Model security. <br></br> <span style={{ color: "#00e676", fontWeight: "bold" }}> Project By <a href="https://linktr.ee/darshanhackz" target="_blank" style={{ fontWeight: "bold", textDecoration: "underline" }}>darshanhackz.</a></span>
           </p>
         </div>
 
