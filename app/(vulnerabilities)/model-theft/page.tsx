@@ -100,8 +100,8 @@ export default function ModelTheftPage() {
                         handleReset();
                     }}
                     className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${isMitigated
-                            ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/50"
-                            : "bg-red-500/20 text-red-400 border border-red-500/50"
+                        ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/50"
+                        : "bg-red-500/20 text-red-400 border border-red-500/50"
                         }`}
                 >
                     {isMitigated ? "Secure (Confidential)" : "Vulnerable (Leaky)"}
@@ -136,6 +136,28 @@ export default function ModelTheftPage() {
                         <strong className="text-zinc-100">API Monitoring:</strong> Monitor API usage patterns to detect and block suspicious activity (e.g., massive data scraping).
                     </li>
                 </ul>
+            </div>
+
+            <div className="rounded-lg border border-emerald-500/20 bg-emerald-500/10 p-6">
+                <h3 className="mb-4 text-xl font-semibold text-emerald-400">Secure Implementation Example</h3>
+                <p className="mb-4 text-zinc-300">Detect and block extraction attacks based on query patterns:</p>
+                <div className="rounded-md bg-black p-4 font-mono text-sm text-zinc-300 overflow-x-auto">
+                    <pre>{`function detectExtractionAttack(userHistory) {
+  // Check for high similarity between consecutive queries
+  // (often used to map decision boundaries)
+  const similarityScore = calculateSimilarity(
+    userHistory[userHistory.length - 1], 
+    userHistory[userHistory.length - 2]
+  );
+
+  if (similarityScore > 0.95) {
+    logSecurityEvent("Potential Model Extraction", userHistory);
+    return true; // Block request
+  }
+
+  return false;
+}`}</pre>
+                </div>
             </div>
         </div>
     );

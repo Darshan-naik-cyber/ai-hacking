@@ -95,8 +95,8 @@ export default function OverreliancePage() {
                         handleReset();
                     }}
                     className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${isMitigated
-                            ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/50"
-                            : "bg-red-500/20 text-red-400 border border-red-500/50"
+                        ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/50"
+                        : "bg-red-500/20 text-red-400 border border-red-500/50"
                         }`}
                 >
                     {isMitigated ? "Secure (Disclaimer)" : "Vulnerable (Hallucination)"}
@@ -131,6 +131,37 @@ export default function OverreliancePage() {
                         <strong className="text-zinc-100">Verification Tools:</strong> Integrate automated fact-checking or code verification tools into the workflow.
                     </li>
                 </ul>
+            </div>
+
+            <div className="rounded-lg border border-emerald-500/20 bg-emerald-500/10 p-6">
+                <h3 className="mb-4 text-xl font-semibold text-emerald-400">Secure Implementation Example</h3>
+                <p className="mb-4 text-zinc-300">Add prominent disclaimers and citations to UI:</p>
+                <div className="rounded-md bg-black p-4 font-mono text-sm text-zinc-300 overflow-x-auto">
+                    <pre>{`function AIResponse({ content, sources }) {
+  return (
+    <div className="border border-zinc-700 rounded p-4">
+      <div className="mb-2 text-zinc-200">{content}</div>
+      
+      {/* Citation Block */}
+      {sources && (
+        <div className="mt-4 text-xs text-zinc-500 border-t border-zinc-800 pt-2">
+          <p className="font-semibold">Sources:</p>
+          <ul>
+            {sources.map(s => (
+              <li key={s.id}><a href={s.url}>{s.title}</a></li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Disclaimer */}
+      <div className="mt-2 text-xs text-yellow-500/80">
+        ⚠️ AI can make mistakes. Please verify important information.
+      </div>
+    </div>
+  );
+}`}</pre>
+                </div>
             </div>
         </div>
     );

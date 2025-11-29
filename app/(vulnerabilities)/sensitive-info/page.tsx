@@ -100,8 +100,8 @@ export default function SensitiveInfoPage() {
                         handleReset();
                     }}
                     className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${isMitigated
-                            ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/50"
-                            : "bg-red-500/20 text-red-400 border border-red-500/50"
+                        ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/50"
+                        : "bg-red-500/20 text-red-400 border border-red-500/50"
                         }`}
                 >
                     {isMitigated ? "Secure (PII Redacted)" : "Vulnerable (PII Exposed)"}
@@ -136,6 +136,23 @@ export default function SensitiveInfoPage() {
                         <strong className="text-zinc-100">Differential Privacy:</strong> Apply differential privacy techniques during training to prevent the model from memorizing individual data points.
                     </li>
                 </ul>
+            </div>
+
+            <div className="rounded-lg border border-emerald-500/20 bg-emerald-500/10 p-6">
+                <h3 className="mb-4 text-xl font-semibold text-emerald-400">Secure Implementation Example</h3>
+                <p className="mb-4 text-zinc-300">Implement an output filter to redact PII patterns:</p>
+                <div className="rounded-md bg-black p-4 font-mono text-sm text-zinc-300 overflow-x-auto">
+                    <pre>{`function scrubPII(text) {
+  const emailRegex = /\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b/g;
+  const phoneRegex = /\\b\\d{3}[-.]?\\d{3}[-.]?\\d{4}\\b/g;
+  
+  return text
+    .replace(emailRegex, '[EMAIL REDACTED]')
+    .replace(phoneRegex, '[PHONE REDACTED]');
+}
+
+const safeResponse = scrubPII(llmOutput);`}</pre>
+                </div>
             </div>
         </div>
     );

@@ -95,8 +95,8 @@ export default function ExcessiveAgencyPage() {
                         handleReset();
                     }}
                     className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${isMitigated
-                            ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/50"
-                            : "bg-red-500/20 text-red-400 border border-red-500/50"
+                        ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/50"
+                        : "bg-red-500/20 text-red-400 border border-red-500/50"
                         }`}
                 >
                     {isMitigated ? "Secure (Recommendation Only)" : "Vulnerable (Autonomous)"}
@@ -131,6 +131,33 @@ export default function ExcessiveAgencyPage() {
                         <strong className="text-zinc-100">Action Logging:</strong> Maintain a detailed audit log of all actions performed by the LLM for accountability and debugging.
                     </li>
                 </ul>
+            </div>
+
+            <div className="rounded-lg border border-emerald-500/20 bg-emerald-500/10 p-6">
+                <h3 className="mb-4 text-xl font-semibold text-emerald-400">Secure Implementation Example</h3>
+                <p className="mb-4 text-zinc-300">Implement a "Human-in-the-Loop" approval workflow:</p>
+                <div className="rounded-md bg-black p-4 font-mono text-sm text-zinc-300 overflow-x-auto">
+                    <pre>{`async function processTrade(tradeRequest) {
+  // 1. Validate request parameters
+  if (!isValidTrade(tradeRequest)) throw new Error("Invalid trade");
+
+  // 2. Check for high-risk thresholds
+  if (tradeRequest.amount > 1000) {
+    // 3. Require human approval
+    const approval = await triggerApprovalWorkflow({
+      approver: "manager@example.com",
+      details: tradeRequest
+    });
+
+    if (approval.status !== "APPROVED") {
+      return "Trade rejected by supervisor.";
+    }
+  }
+
+  // 4. Execute trade
+  return executeOrder(tradeRequest);
+}`}</pre>
+                </div>
             </div>
         </div>
     );

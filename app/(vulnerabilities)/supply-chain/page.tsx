@@ -100,8 +100,8 @@ export default function SupplyChainPage() {
                         handleReset();
                     }}
                     className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${isMitigated
-                            ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/50"
-                            : "bg-red-500/20 text-red-400 border border-red-500/50"
+                        ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/50"
+                        : "bg-red-500/20 text-red-400 border border-red-500/50"
                         }`}
                 >
                     {isMitigated ? "Secure (Verified Only)" : "Vulnerable (Any Plugin)"}
@@ -136,6 +136,26 @@ export default function SupplyChainPage() {
                         <strong className="text-zinc-100">Vulnerability Scanning:</strong> Regularly scan your dependencies for known vulnerabilities (CVEs).
                     </li>
                 </ul>
+            </div>
+
+            <div className="rounded-lg border border-emerald-500/20 bg-emerald-500/10 p-6">
+                <h3 className="mb-4 text-xl font-semibold text-emerald-400">Secure Implementation Example</h3>
+                <p className="mb-4 text-zinc-300">Verify the integrity of third-party components using cryptographic hashes:</p>
+                <div className="rounded-md bg-black p-4 font-mono text-sm text-zinc-300 overflow-x-auto">
+                    <pre>{`import crypto from 'crypto';
+
+async function verifyPlugin(pluginUrl, expectedHash) {
+  const response = await fetch(pluginUrl);
+  const buffer = await response.arrayBuffer();
+  const hash = crypto.createHash('sha256').update(Buffer.from(buffer)).digest('hex');
+  
+  if (hash !== expectedHash) {
+    throw new Error('Security Alert: Plugin hash mismatch! Potential supply chain attack.');
+  }
+  
+  return loadPlugin(buffer);
+}`}</pre>
+                </div>
             </div>
         </div>
     );

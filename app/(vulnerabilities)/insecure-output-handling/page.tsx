@@ -100,8 +100,8 @@ export default function InsecureOutputHandlingPage() {
                         handleReset();
                     }}
                     className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${isMitigated
-                            ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/50"
-                            : "bg-red-500/20 text-red-400 border border-red-500/50"
+                        ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/50"
+                        : "bg-red-500/20 text-red-400 border border-red-500/50"
                         }`}
                 >
                     {isMitigated ? "Secure (Sanitized)" : "Vulnerable"}
@@ -143,6 +143,25 @@ export default function InsecureOutputHandlingPage() {
                         <strong className="text-zinc-100">Validation:</strong> Validate the structure and content of the output against a schema (e.g., JSON schema) before using it.
                     </li>
                 </ul>
+            </div>
+
+            <div className="rounded-lg border border-emerald-500/20 bg-emerald-500/10 p-6">
+                <h3 className="mb-4 text-xl font-semibold text-emerald-400">Secure Implementation Example</h3>
+                <p className="mb-4 text-zinc-300">Sanitize HTML output using a library like DOMPurify before rendering:</p>
+                <div className="rounded-md bg-black p-4 font-mono text-sm text-zinc-300 overflow-x-auto">
+                    <pre>{`import DOMPurify from 'dompurify';
+
+function SafeDisplay({ content }) {
+  // Sanitize the content to remove malicious scripts
+  const cleanContent = DOMPurify.sanitize(content);
+
+  return (
+    <div 
+      dangerouslySetInnerHTML={{ __html: cleanContent }} 
+    />
+  );
+}`}</pre>
+                </div>
             </div>
         </div>
     );

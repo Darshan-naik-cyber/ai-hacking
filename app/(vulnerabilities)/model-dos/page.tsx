@@ -100,8 +100,8 @@ export default function ModelDoSPage() {
                         handleReset();
                     }}
                     className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${isMitigated
-                            ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/50"
-                            : "bg-red-500/20 text-red-400 border border-red-500/50"
+                        ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/50"
+                        : "bg-red-500/20 text-red-400 border border-red-500/50"
                         }`}
                 >
                     {isMitigated ? "Secure (Rate Limited)" : "Vulnerable (No Limits)"}
@@ -151,6 +151,30 @@ export default function ModelDoSPage() {
                         <strong className="text-zinc-100">Queue Management:</strong> Implement fair queuing mechanisms to prevent a single user from monopolizing the system.
                     </li>
                 </ul>
+            </div>
+
+            <div className="rounded-lg border border-emerald-500/20 bg-emerald-500/10 p-6">
+                <h3 className="mb-4 text-xl font-semibold text-emerald-400">Secure Implementation Example</h3>
+                <p className="mb-4 text-zinc-300">Implement strict input validation and rate limiting:</p>
+                <div className="rounded-md bg-black p-4 font-mono text-sm text-zinc-300 overflow-x-auto">
+                    <pre>{`import { rateLimit } from 'express-rate-limit';
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100 // limit each IP to 100 requests per windowMs
+});
+
+app.post('/api/chat', limiter, (req, res) => {
+  const { prompt } = req.body;
+  
+  // Enforce token limit
+  if (prompt.length > MAX_CHARS) {
+    return res.status(400).json({ error: "Input too long" });
+  }
+  
+  // Process request...
+});`}</pre>
+                </div>
             </div>
         </div>
     );

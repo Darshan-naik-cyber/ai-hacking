@@ -100,8 +100,8 @@ export default function TrainingDataPoisoningPage() {
                         handleReset();
                     }}
                     className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${isMitigated
-                            ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/50"
-                            : "bg-red-500/20 text-red-400 border border-red-500/50"
+                        ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/50"
+                        : "bg-red-500/20 text-red-400 border border-red-500/50"
                         }`}
                 >
                     {isMitigated ? "Secure (Verified Data)" : "Vulnerable (Poisoned Data)"}
@@ -136,6 +136,27 @@ export default function TrainingDataPoisoningPage() {
                         <strong className="text-zinc-100">Human-in-the-Loop:</strong> Use human reviewers to verify data quality and model outputs during the fine-tuning process.
                     </li>
                 </ul>
+            </div>
+
+            <div className="rounded-lg border border-emerald-500/20 bg-emerald-500/10 p-6">
+                <h3 className="mb-4 text-xl font-semibold text-emerald-400">Secure Implementation Example</h3>
+                <p className="mb-4 text-zinc-300">Implement automated data validation checks during the data ingestion pipeline:</p>
+                <div className="rounded-md bg-black p-4 font-mono text-sm text-zinc-300 overflow-x-auto">
+                    <pre>{`function validateTrainingData(dataset) {
+  return dataset.filter(entry => {
+    // Check for known malicious patterns
+    if (containsMaliciousPatterns(entry.text)) return false;
+    
+    // Verify source reputation
+    if (!isTrustedSource(entry.source)) return false;
+    
+    // Statistical outlier detection
+    if (isStatisticalOutlier(entry.embedding)) return false;
+    
+    return true;
+  });
+}`}</pre>
+                </div>
             </div>
         </div>
     );
