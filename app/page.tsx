@@ -98,31 +98,31 @@ const vulnerabilities = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black p-8">
+    <div className="min-h-screen bg-black p-4 sm:p-6 lg:p-8">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-12 text-center">
-          <h1 className="mb-4 text-5xl font-bold tracking-tight text-white">
+        <div className="mb-8 sm:mb-12 text-center">
+          <h1 className="mb-3 sm:mb-4 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white">
             OWASP Top 10 for <span className="text-emerald-500">LLM</span> 2025
           </h1>
-          <p className="text-xl text-zinc-400">
-            Interactive demonstrations and educational resources for Large Language Model security. <br></br> <span style={{ color: "#00e676", fontWeight: "bold" }}> Project By <a href="https://linktr.ee/darshanhackz" target="_blank" style={{ fontWeight: "bold", textDecoration: "underline" }}>darshanhackz.</a></span>
+          <p className="text-base sm:text-lg lg:text-xl text-zinc-400 px-4">
+            Interactive demonstrations and educational resources for Large Language Model security. <br className="hidden sm:block" /> <span style={{ color: "#00e676", fontWeight: "bold" }}>Project By <a href="https://linktr.ee/darshanhackz" target="_blank" style={{ fontWeight: "bold", textDecoration: "underline" }}>darshanhackz.</a></span>
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {vulnerabilities.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="group relative overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 transition-all hover:border-emerald-500/50 hover:bg-zinc-900"
+              className="group relative overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/50 p-5 sm:p-6 transition-all hover:border-emerald-500/50 hover:bg-zinc-900"
             >
-              <div className="mb-4 flex items-center justify-between">
-                <div className={`rounded-lg p-3 ${item.bg} ${item.color}`}>
-                  <item.icon className="h-6 w-6" />
+              <div className="mb-3 sm:mb-4 flex items-center justify-between">
+                <div className={`rounded-lg p-2.5 sm:p-3 ${item.bg} ${item.color}`}>
+                  <item.icon className="h-5 w-5 sm:h-6 sm:w-6" />
                 </div>
-                <ArrowRight className="h-5 w-5 -translate-x-2 opacity-0 transition-all text-zinc-500 group-hover:translate-x-0 group-hover:opacity-100" />
+                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 -translate-x-2 opacity-0 transition-all text-zinc-500 group-hover:translate-x-0 group-hover:opacity-100" />
               </div>
-              <h3 className="mb-2 text-xl font-semibold text-zinc-100">
+              <h3 className="mb-2 text-lg sm:text-xl font-semibold text-zinc-100">
                 {item.name}
               </h3>
               <p className="text-sm text-zinc-400">
