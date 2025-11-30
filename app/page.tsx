@@ -104,6 +104,7 @@ export default function Home() {
           <h1 className="mb-3 sm:mb-4 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white">
             OWASP Top 10 for <span className="text-emerald-500">LLM</span> 2025
           </h1>
+          <meta name="google-adsense-account" content="ca-pub-1343911699290276"></meta>
           <p className="text-base sm:text-lg lg:text-xl text-zinc-400 px-4">
             Interactive demonstrations and educational resources for Large Language Model security. <br className="hidden sm:block" /> <span style={{ color: "#00e676", fontWeight: "bold" }}>Project By <a href="https://linktr.ee/darshanhackz" target="_blank" style={{ fontWeight: "bold", textDecoration: "underline" }}>darshanhackz.</a></span>
           </p>
