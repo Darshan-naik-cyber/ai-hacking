@@ -11,6 +11,7 @@ import {
   SearchCheck,
   Copy,
   ArrowRight,
+  BookOpen,
 } from "lucide-react";
 
 const vulnerabilities = [
@@ -133,6 +134,18 @@ export default function Home() {
           ))}
         </div>
       </div>
+
+      {/* Floating Action Button */}
+      <a
+        href="https://medium.com/@darshannnaik1234/list/ai-llm-hacking-series-631e118084ea"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-emerald-600 px-5 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:shadow-emerald-500/50 hover:scale-105 active:scale-95 sm:px-6 sm:py-4 sm:text-base"
+        aria-label="Read LLM Articles on Medium"
+      >
+        <BookOpen className="h-5 w-5 sm:h-6 sm:w-6" />
+        <span>LLM Articles</span>
+      </a>
     </div>
   );
 }
