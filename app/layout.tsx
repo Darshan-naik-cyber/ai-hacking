@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Sidebar } from "./components/Sidebar";
 import { WindowPolyfill } from "./components/WindowPolyfill";
@@ -29,6 +30,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-zinc-100`}
       >
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1343911699290276"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
         <WindowPolyfill />
         <div className="flex h-screen overflow-hidden">
           <Sidebar />
